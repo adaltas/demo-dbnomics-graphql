@@ -35,7 +35,7 @@ async function callBackend({
   throw new Error(`Response: ${response.status} - ${text}`);
 }
 
-const defaultQuery = `query adaltas {
+const defaultQuery = `query dbnomics {
   # Retun the list of providers present inside DBnomics
   get_providers {
     nb_datasets
