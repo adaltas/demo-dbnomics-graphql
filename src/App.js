@@ -17,7 +17,7 @@ import "./App.css";
 
 const DEFAULT_QUERY = `# shift-option/alt-click on a query below to jump to it in the explorer
 # option/alt-click on a field in the explorer to select all subfields
-query adaltas {
+query dbnomics {
   # Retun the list of providers present inside DBnomics
   get_providers {
     nb_datasets
