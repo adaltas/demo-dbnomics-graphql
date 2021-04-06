@@ -59,19 +59,15 @@ query dbnomics {
   #   provider_code: "OECD"
   # ) {
   #   series {
-  #     docs {
-  #       dataset_code
-  #       provider_code
-  #       series_code
-  #     }
+  #     docs
   #   }
   # }
-  # Let's use the "USA.B6BLTT01.CXCUSA.Q" serie
+  # Let's use the "UA5M.CSCICP03.IXNSA.M" serie
   # Return the dataset
   # get_series_provider_code_dataset_code_series_code(
   #   dataset_code: "MEI"
   #   provider_code: "OECD"
-  #   series_code: "USA.B6BLTT01.CXCUSA.Q"
+  #   series_code: "A5M.CSCICP03.IXNSA.M"
   #   observations: "1"
   # ) {
   #   series {
