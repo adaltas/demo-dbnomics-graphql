@@ -72,15 +72,11 @@ query dbnomics {
   #   dataset_code: "MEI"
   #   provider_code: "OECD"
   #   series_code: "USA.B6BLTT01.CXCUSA.Q"
+  #   observations: "1"
   # ) {
   #   series {
-  #     docs {
-  #       series_code
-  #       dataset_code
-  #       provider_code
-  #     }
+  #     docs
   #   }
-  #   dataset
   # }
 }`;
 
@@ -120,8 +116,26 @@ class App extends Component {
     return result;
   }
   async componentDidMount() {
+    const swaggerSchemaReq = await fetch(`https://api.db.nomics.world/v22/apispec_1.json`)
+    const swaggerSchemaText = await swaggerSchemaReq.text();
+    const swaggerSchema = JSON.parse(swaggerSchemaText);
+    swaggerSchema.paths
+    ["/series"]
+    .get.responses[200].schema.properties.series.properties.docs.items = {
+      type: 'object'
+    }
+    swaggerSchema.paths
+    ["/series/{provider_code}/{dataset_code}"]
+    .get.responses[200].schema.properties.series.properties.docs.items = {
+      type: 'object'
+    }
+    swaggerSchema.paths
+    ["/series/{provider_code}/{dataset_code}/{series_code}"]
+    .get.responses[200].schema.properties.series.properties.docs.items = {
+      type: 'object'
+    }
     const schema = await createSchema({
-      swaggerSchema: `https://api.db.nomics.world/v22/apispec_1.json`,
+      swaggerSchema: swaggerSchema,
       callBackend,
     })
     this.setState({schema: schema})
