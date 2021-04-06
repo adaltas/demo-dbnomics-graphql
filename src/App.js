@@ -38,7 +38,6 @@ query adaltas {
   #   category_tree {
   #     code
   #     name
-  #     children
   #   }
   # }
   # Note, it is also possible to search by keywords
